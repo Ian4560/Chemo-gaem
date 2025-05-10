@@ -1,33 +1,31 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const chessBoard = document.getElementById('chess-board');
-    const twoPlayerModeBtn = document.getElementById('two-player-mode');
-    const singlePlayerModeBtn = document.getElementById('single-player-mode');
-    const botSettings = document.getElementById('bot-settings');
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chess Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Chess Game</h1>
+    <div id="game-container">
+        <!-- Chess Board -->
+        <div id="chess-board"></div>
 
-    // Initialize the chessboard
-    function createChessBoard() {
-        for (let row = 0; row < 8; row++) {
-            for (let col = 0; col < 8; col++) {
-                const square = document.createElement('div');
-                square.className = (row + col) % 2 === 0 ? 'white' : 'black';
-                chessBoard.appendChild(square);
-            }
-        }
-    }
-
-    // Event listeners for modes
-    twoPlayerModeBtn.addEventListener('click', () => {
-        botSettings.style.display = 'none';
-        alert('Two-Player Mode Selected!');
-        // Add logic for two-player mode here
-    });
-
-    singlePlayerModeBtn.addEventListener('click', () => {
-        botSettings.style.display = 'block';
-        alert('Single-Player Mode Selected! Configure Bot Settings.');
-        // Add logic for single-player mode here
-    });
-
-    // Create the board on load
-    createChessBoard();
-});
+        <!-- Controls -->
+        <div id="controls">
+            <button id="two-player-mode">Two-Player Mode</button>
+            <button id="single-player-mode">Single-Player Mode</button>
+            <div id="bot-settings" style="display: none;">
+                <label for="difficulty">Bot Difficulty:</label>
+                <select id="difficulty">
+                    <option value="easy">Easy</option>
+                    <option value="medium">Medium</option>
+                    <option value="hard">Hard</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
