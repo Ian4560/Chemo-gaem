@@ -4,12 +4,37 @@ document.addEventListener('DOMContentLoaded', () => {
     const singlePlayerModeBtn = document.getElementById('single-player-mode');
     const botSettings = document.getElementById('bot-settings');
 
-    // Initialize the chessboard
+    // Initial positions of chess pieces
+    const initialBoard = [
+        ['r', 'n', 'b', 'q', 'k', 'b', 'n', 'r'],
+        ['p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'],
+        ['', '', '', '', '', '', '', ''],
+        ['', '', '', '', '', '', '', ''],
+        ['', '', '', '', '', '', '', ''],
+        ['', '', '', '', '', '', '', ''],
+        ['P', 'P', 'P', 'P', 'P', 'P', 'P', 'P'],
+        ['R', 'N', 'B', 'Q', 'K', 'B', 'N', 'R']
+    ];
+
+    // Map pieces to Unicode characters
+    const pieceMap = {
+        'r': '♜', 'n': '♞', 'b': '♝', 'q': '♛', 'k': '♚', 'p': '♟',
+        'R': '♖', 'N': '♘', 'B': '♗', 'Q': '♕', 'K': '♔', 'P': '♙'
+    };
+
+    // Initialize the chessboard with pieces
     function createChessBoard() {
+        chessBoard.innerHTML = ''; // Clear the board
         for (let row = 0; row < 8; row++) {
             for (let col = 0; col < 8; col++) {
                 const square = document.createElement('div');
                 square.className = (row + col) % 2 === 0 ? 'white' : 'black';
+
+                const piece = initialBoard[row][col];
+                if (piece) {
+                    square.textContent = pieceMap[piece];
+                }
+
                 chessBoard.appendChild(square);
             }
         }
